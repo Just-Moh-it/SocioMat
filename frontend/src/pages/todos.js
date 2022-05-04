@@ -5,68 +5,68 @@
 // import { appwrite, todoState, userState } from "../store/global";
 // import { getJWT } from "../utils/jwt";
 
-// const Todo = () => {
-//   const [currentTodo, setCurrentTodo] = useState("");
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [todos, setTodos] = useRecoilState(todoState);
-//   const [user, setUser] = useRecoilState(userState);
+const Todo = () => {
+  //   const [currentTodo, setCurrentTodo] = useState("");
+  //   const [isLoading, setIsLoading] = useState(true);
+  //   const [todos, setTodos] = useRecoilState(todoState);
+  //   const [user, setUser] = useRecoilState(userState);
 
-//   const router = useRouter();
-//   const addTodo = async (e) => {
-//     e.preventDefault();
-//     const jwt = await getJWT();
-//     const res = await fetch("/api/todos", {
-//       method: "post",
-//       headers: {
-//         JWT: jwt,
-//       },
-//       body: JSON.stringify({
-//         user: user.$id,
-//         todo: {
-//           content: currentTodo,
-//           isComplete: false,
-//         },
-//       }),
-//     });
-//     const json = await res.json();
-//     setTodos(todos.concat(json));
-//     setCurrentTodo("");
-//   };
+  //   const router = useRouter();
+  //   const addTodo = async (e) => {
+  //     e.preventDefault();
+  //     const jwt = await getJWT();
+  //     const res = await fetch("/api/todos", {
+  //       method: "post",
+  //       headers: {
+  //         JWT: jwt,
+  //       },
+  //       body: JSON.stringify({
+  //         user: user.$id,
+  //         todo: {
+  //           content: currentTodo,
+  //           isComplete: false,
+  //         },
+  //       }),
+  //     });
+  //     const json = await res.json();
+  //     setTodos(todos.concat(json));
+  //     setCurrentTodo("");
+  //   };
 
-//   const logout = async () => {
-//     await appwrite.account.deleteSession("current");
-//     window.localStorage.removeItem("jwt");
-//     window.localStorage.removeItem("jwt_expire");
-//     router.push("/");
-//   };
+  //   const logout = async () => {
+  //     await appwrite.account.deleteSession("current");
+  //     window.localStorage.removeItem("jwt");
+  //     window.localStorage.removeItem("jwt_expire");
+  //     router.push("/");
+  //   };
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const jwt = await getJWT();
-//       const res = await fetch("/api/todos", {
-//         headers: {
-//           JWT: jwt,
-//         },
-//       });
-//       const json = await res.json();
-//       setTodos(json.documents);
-//       setIsLoading(false);
-//     };
-//     fetchData();
-//   }, [user, setTodos]);
+  //   useEffect(() => {
+  //     const fetchData = async () => {
+  //       const jwt = await getJWT();
+  //       const res = await fetch("/api/todos", {
+  //         headers: {
+  //           JWT: jwt,
+  //         },
+  //       });
+  //       const json = await res.json();
+  //       setTodos(json.documents);
+  //       setIsLoading(false);
+  //     };
+  //     fetchData();
+  //   }, [user, setTodos]);
 
-//   useEffect(() => {
-//     if (user) return;
-//     const fetchData = async () => {
-//       const response = await appwrite.account.get();
-//       setUser(response);
-//     };
-//     fetchData();
-//   }, [setUser, user]);
+  //   useEffect(() => {
+  //     if (user) return;
+  //     const fetchData = async () => {
+  //       const response = await appwrite.account.get();
+  //       setUser(response);
+  //     };
+  //     fetchData();
+  //   }, [setUser, user]);
 
-//   return (
-//     <>
-//       <section className="container h-screen max-h-screen px-3 max-w-xl mx-auto flex flex-col">
+  return (
+    <>
+      {/* //       <section className="container h-screen max-h-screen px-3 max-w-xl mx-auto flex flex-col">
 //         <div className="my-auto p-16 rounded-lg text-center">
 //           <div className="font-bold text-3xl md:text-5xl lg:text-6xl">
 //             📝 <br /> &nbsp; toTooooDoooos
@@ -99,9 +99,9 @@
 //         >
 //           Logout 👋
 //         </button>
-//       </section>
-//     </>
-//   );
-// };
+//       </section> */}
+    </>
+  );
+};
 
-// export default Todo;
+export default Todo;
