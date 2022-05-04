@@ -1,0 +1,71 @@
+.wrapper {
+  .cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2.31/1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .avatar {
+    margin-top: -18px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+
+  .userInfo {
+    display: inline-block;
+    margin: 12px 0 0 16px;
+    padding-top: -10px;
+    vertical-align: top;
+    & * {
+      margin: 0;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      color: $primary;
+      margin-bottom: 3px;
+      margin-right: 6px;
+    }
+
+    .username {
+      font-weight: 600;
+      font-size: 11px;
+      line-height: 13px;
+      color: $primary-light;
+    }
+  }
+
+  .stats {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    gap: 15px;
+    .stat {
+      text-align: center;
+
+      .statValue {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: $primary;
+      }
+
+      .statKey {
+        font-weight: 600;
+        font-size: 11px;
+        line-height: 13px;
+        text-align: center;
+
+        color: $primary-light;
+      }
+    }
+  }
+}

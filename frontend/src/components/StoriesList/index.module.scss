@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 10px 0;
+  overflow: hidden;
+  overflow-x: scroll;
+}

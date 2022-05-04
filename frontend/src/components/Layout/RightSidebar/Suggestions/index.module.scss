@@ -1,0 +1,94 @@
+.wrapper {
+  color: $primary;
+
+  .header {
+    display: flex;
+    align-items: space-between;
+    flex-grow: 1;
+    gap: 15px;
+
+    & > * {
+      margin: 0;
+    }
+    .heading {
+      width: 100%;
+    }
+    .cta {
+      flex-shrink: 0;
+    }
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0;
+    margin: 20px 0;
+
+    .item {
+      display: flex;
+      width: 100%;
+
+      flex-shrink: 0;
+      align-items: center;
+      gap: 17px;
+      justify-content: space-between;
+
+      .link {
+        width: 100%;
+        display: flex;
+        align-items: space-between;
+        gap: 17px;
+      }
+
+      .avatar {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 0px;
+        line-height: 50px;
+
+        &.hasUnseenStory {
+          border: 3px solid $bg-dark;
+          outline: 3px solid $secondary;
+        }
+      }
+
+      .userInfo {
+        width: 100%;
+        .name {
+          color: $primary;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 16px;
+        }
+
+        .username {
+          font-weight: 600;
+          font-size: 11px;
+          line-height: 13px;
+
+          color: $primary-light;
+        }
+      }
+
+      .followWrapper {
+        .button {
+          box-shadow: 0px 7px 17px rgba(169, 116, 255, 0.25);
+        }
+      }
+
+      .middle {
+        flex-grow: 1;
+      }
+      .right,
+      .left {
+        flex-shrink: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.wrapper {
+  .input {
+    border-radius: 8px;
+    background-color: $bg;
+    font: inherit;
+    border: none;
+    color: $primary-light;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 13px;
+    width: 100%;
+    padding: 13px 16px;
+    outline: none;
+    resize: vertical;
+
+    &::placeholder {
+      font: inherit;
+      color: $primary-light;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    align-items: space-between;
+    gap: 10px;
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: $primary;
+      font-weight: 600;
+      font-family: inherit;
+      background-color: $bg;
+      border-radius: 8px;
+    }
+  }
+}

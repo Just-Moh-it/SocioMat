@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-direction: column;
+
+  .avatar {
+    position: relative;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &.seen {
+      outline-offset: 3px;
+      outline: 3px solid $secondary;
+    }
+  }
+
+  .username {
+  }
+}

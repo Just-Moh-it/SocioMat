@@ -1,0 +1,14 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+
+  margin-top: auto;
+  margin-bottom: auto;
+
+  &.hasUnseenStory {
+    outline: 3px solid $secondary;
+    border: 3px solid $bg-dark;
+  }
+}

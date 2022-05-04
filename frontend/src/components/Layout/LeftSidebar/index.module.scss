@@ -1,0 +1,62 @@
+.wrapper {
+  padding: 60px 50px;
+  background-color: $bg;
+  min-height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  .navLink {
+    padding: 11px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+
+    font-size: 13px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: $primary-light;
+
+    margin: 8px 0;
+
+    .icon {
+      flex-shrink: 0;
+      filter: brightness(0) saturate(100%) invert(71%) sepia(27%) saturate(357%)
+        hue-rotate(184deg) brightness(98%) contrast(88%);
+    }
+
+    &.active {
+      color: $primary;
+      box-shadow: 0px 7px 21px #f7faff;
+
+      .icon {
+        color: $secondary;
+        filter: brightness(0) saturate(100%) invert(59%) sepia(47%)
+          saturate(5344%) hue-rotate(228deg) brightness(101%) contrast(100%);
+      }
+    }
+  }
+
+  .navWrapper {
+    margin-top: 48px;
+
+    .heading {
+      margin-bottom: 28px;
+    }
+
+    .cta {
+      margin: 15px 0 25px;
+    }
+  }
+
+  .banner {
+    position: relative;
+    display: block;
+    height: 192px;
+    width: 166px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 8px 19px rgba(195, 159, 255, 0.2);
+  }
+}
