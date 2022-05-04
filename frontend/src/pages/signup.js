@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Alert from "../components/alert";
+// import Alert from "../components/alert";
 import { appwrite } from "../store/global";
 
 const SignUp = () => {
@@ -23,7 +23,7 @@ const SignUp = () => {
 
   return (
     <>
-      {alert && <Alert message={alert} />}
+      {/* {alert && <Alert message={alert} />} */}
       <section className="container h-screen mx-auto flex">
         <div className="flex-grow flex flex-col max-w-xl justify-center p-6">
           <h1 className="text-6xl font-bold">Sign Up</h1>
