@@ -13,20 +13,20 @@ const Layout = ({ isProtected, title, children }) => {
   const setUser = useRecoilState(userState)[1];
   const router = useRouter();
 
-  useEffect(() => {
-    if (isProtected) {
-      appwrite.account.get().then(
-        (response) => {
-          setUser(response);
-          router.replace("/feed");
-        },
-        () => {
-          console.log("no session found");
-          router.replace("/login");
-        }
-      );
-    }
-  }, [isProtected]);
+  // useEffect(() => {
+  //   if (isProtected) {
+  //     appwrite.account.get().then(
+  //       (response) => {
+  //         setUser(response);
+  //         router.replace("/feed");
+  //       },
+  //       () => {
+  //         console.log("no session found");
+  //         router.replace("/login");
+  //       }
+  //     );
+  //   }
+  // }, [isProtected, setUser, router]);
 
   return (
     // Head

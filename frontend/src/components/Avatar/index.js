@@ -15,7 +15,7 @@ const Avatar = ({
       ].join(" ")}
       style={{ height, width }}
     >
-      <Image src={avatarUri} layout="fill" objectFit="cover" />
+      <Image alt="Avatar" src={avatarUri} layout="fill" objectFit="cover" />
     </div>
   );
 };

@@ -6,7 +6,7 @@ const StoryItem = ({ id, username, avatar, seen }) => {
     <div className={styles.wrapper}>
       {/* Avatar */}
       <div className={[styles.avatar, seen ? styles.seen : ""].join(" ")}>
-        <Image src={avatar} layout="fill" />
+        <Image alt="image" src={avatar} layout="fill" />
       </div>
 
       {/* Username */}

@@ -55,7 +55,12 @@ const FeedItem = ({
       <div className={styles.content}>
         {/* Image */}
         <div className={styles.image}>
-          <Image src={imageUri} layout="fill" objectFit="cover" />
+          <Image
+            alt="Feed Image"
+            src={imageUri}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         {/* Description */}
         <div className={styles.description}>
@@ -85,6 +90,7 @@ const FeedItem = ({
             onClick={() => console.log("Adding your comments!")}
           >
             <Image
+              alt="emoji picker"
               src="/assets/icons/filled/happy-face.svg"
               width="20"
               height="20"
@@ -125,14 +131,14 @@ const FeedItem = ({
 
 const HeaderButton = ({ onClick, iconSrc }) => (
   <button className={styles.headerBtn} onClick={onClick}>
-    <Image src={iconSrc} height="24" width="24" />
+    <Image alt="Button Icon" src={iconSrc} height="24" width="24" />
   </button>
 );
 
 const ActionButton = ({ onClick, iconSrc, children }) => (
   <button className={styles.actionBtn} onClick={onClick}>
     <div className={styles.image}>
-      <Image src={iconSrc} height="20" width="20" />
+      <Image alt="Action Button Icon" src={iconSrc} height="20" width="20" />
     </div>
     <span className={styles.content}>{children}</span>
   </button>

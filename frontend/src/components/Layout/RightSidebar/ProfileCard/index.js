@@ -10,7 +10,12 @@ const ProfileCard = () => {
     <div className={styles.wrapper}>
       {/* Cover Image */}
       <div className={styles.cover}>
-        <Image src={data.coverUri} layout="fill" objectFit="cover" />
+        <Image
+          alt="image"
+          src={data.coverUri}
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
 
       {/* Avatar */}
@@ -30,6 +35,7 @@ const ProfileCard = () => {
           <span className={styles.name}>{data.name}</span>
           {data?.isVerified && (
             <Image
+              alt="image"
               height={11}
               width={11}
               src="/assets/icons/filled/verify-badge.svg"
@@ -44,7 +50,7 @@ const ProfileCard = () => {
       {/* Stats */}
       <section className={styles.stats}>
         {Object.keys(data.stats).map((stat) => (
-          <section className={styles.stat}>
+          <section key={stat} className={styles.stat}>
             <h4 className={styles.statValue}>
               {getShortInt(data.stats[stat])}
             </h4>

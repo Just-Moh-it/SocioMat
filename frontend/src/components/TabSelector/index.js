@@ -15,6 +15,7 @@ const Feed = ({ tabs: srcTabs, defaultValue }) => {
     <ul className={styles.wrapper}>
       {tabs.map(({ text, value, onClick, isActive }) => (
         <li
+          key={value}
           role="button"
           className={[
             styles.tab,

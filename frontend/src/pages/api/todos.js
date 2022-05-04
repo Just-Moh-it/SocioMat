@@ -1,6 +1,6 @@
 import { appwrite, Server } from "../../store/global";
 
-export default async (req, res) => {
+const todos = async (req, res) => {
   const { jwt } = req.headers;
   const payload = JSON.parse(req.body || null);
 
@@ -66,3 +66,5 @@ export default async (req, res) => {
     res.status(401).json(e);
   }
 };
+
+export default todos;

@@ -68,7 +68,7 @@ const TodoItem = ({ item }) => {
         onClick={handleDelete}
         className="focus:outline-none transition duration-75 ease-in-out transform hover:scale-125"
       >
-        <img src="/assets/delete.svg" className="w-6 h-6 text-red-500" />
+        {/* <Image src="/assets/delete.svg" className="w-6 h-6 text-red-500" /> */}
       </button>
     </li>
   );

@@ -19,7 +19,7 @@ const NewPost = () => {
         <button
           className={[styles.button, styles.imageBtn, "btn primary"].join(" ")}
         >
-          <Image src="/assets/icons/filled/Image.svg" height={24} width={24} />
+          <Image alt="image" src="/assets/icons/filled/Image.svg" height={24} width={24} />
           <span>Image</span>
         </button>
 
@@ -27,7 +27,7 @@ const NewPost = () => {
         <button
           className={[styles.button, styles.videoBtn, "btn primary"].join(" ")}
         >
-          <Image src="/assets/icons/filled/Video.svg" height={24} width={24} />
+          <Image alt="image" src="/assets/icons/filled/Video.svg" height={24} width={24} />
           <span>Video</span>
         </button>
       </div>

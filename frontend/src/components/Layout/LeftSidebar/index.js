@@ -8,7 +8,7 @@ const LeftSidebar = () => {
       {/* Logo */}
       <Link href="/" passHref>
         <a>
-          <Image height={25} width={129} src="/assets/images/logo.svg" />
+          <Image alt="image" height={25} width={129} src="/assets/images/logo.svg" />
         </a>
       </Link>
 
@@ -41,7 +41,7 @@ const LeftSidebar = () => {
       {/* Banner */}
       <Link href="https://github.com/Just-Moh-it/SocioMat" passHref>
         <a className={styles.banner}>
-          <Image src="/assets/images/banner.png" layout="fill" />
+          <Image alt="image" src="/assets/images/banner.png" layout="fill" />
         </a>
       </Link>
     </div>
@@ -52,7 +52,7 @@ const NavItem = ({ href, iconRelSrc, children, isActive }) => (
   <Link href={href || "/"} passHref>
     <a className={[styles.navLink, isActive ? styles.active : ""].join(" ")}>
       <span className={styles.icon}>
-        <Image src={"/assets/icons/" + iconRelSrc} height={22} width={22} />
+        <Image alt="image" src={"/assets/icons/" + iconRelSrc} height={22} width={22} />
       </span>
       {children}
     </a>

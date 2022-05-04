@@ -19,6 +19,7 @@ const RightSidebar = () => {
         >
           {/* Icon */}
           <Image
+            alt="image"
             src="/assets/icons/outline/search.svg"
             width={24}
             height={24}
@@ -35,6 +36,7 @@ const RightSidebar = () => {
             )}
           >
             <Image
+              alt="image"
               src="/assets/icons/filled/Notification.svg"
               height={24}
               width={24}
@@ -50,7 +52,12 @@ const RightSidebar = () => {
             " "
           )}
         >
-          <Image src="/assets/icons/filled/Upload.svg" height={24} width={24} />
+          <Image
+            alt="image"
+            src="/assets/icons/filled/Upload.svg"
+            height={24}
+            width={24}
+          />
         </div>
       </section>
 

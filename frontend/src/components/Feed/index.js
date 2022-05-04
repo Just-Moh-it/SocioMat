@@ -34,7 +34,7 @@ const Feed = () => {
       <div className={styles.content}>
         {/* Feed item */}
         {data.map((feedItem) => (
-          <FeedItem {...feedItem} />
+          <FeedItem key={Math.random()} {...feedItem} />
         ))}
       </div>
     </div>

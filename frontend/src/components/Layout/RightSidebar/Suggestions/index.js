@@ -17,7 +17,7 @@ const Suggestions = () => {
       </div>
       <ul className={styles.list}>
         {data.map((i) => (
-          <SuggestionItem {...i} />
+          <SuggestionItem key={i.id} {...i} />
         ))}
       </ul>
     </div>
@@ -36,7 +36,7 @@ const SuggestionItem = ({
       <a className={styles.link}>
         {/* Avatar */}
         <div className={[styles.avatar, styles.left].join(" ")}>
-          <Image src={avatarUri} layout="fill" objectFit="cover" />
+          <Image alt="image" src={avatarUri} layout="fill" objectFit="cover" />
         </div>
         {/* Name and Username */}
         <div className={(styles.middle, styles.userInfo)}>
