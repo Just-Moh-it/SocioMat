@@ -1,0 +1,47 @@
+.wrapper {
+  max-width: 480px;
+  .oauth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 45px;
+
+    .item {
+      padding: 10px 45px;
+
+      .image {
+        position: relative;
+
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  .separator {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: url('/assets/icons/utils/separator.svg');
+    // Repeat in horizonal direction with fixed width
+    background-repeat: repeat-x;
+    // Align the background in center
+    background-position: center;
+
+    align-items: center;
+    position: relative;
+
+    .text {
+      background-color: $bg;
+      padding: 0 10px;
+
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 21px;
+      /* identical to box height */
+
+      text-align: center;
+
+      color: $primary-light;
+    }
+  }
+}

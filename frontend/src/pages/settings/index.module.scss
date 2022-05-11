@@ -1,0 +1,21 @@
+.wrapper {
+  .settingTab {
+  }
+
+  .themeElement {
+    width: 138px;
+    height: 94px;
+    border-radius: 8px;
+    position: relative;
+    background-color: $accent;
+    overflow: hidden;
+
+    .image {
+      position: absolute;
+      bottom: -11px;
+      right: -7px;
+      width: 113px;
+      height: 78px;
+    }
+  }
+}

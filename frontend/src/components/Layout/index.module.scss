@@ -1,22 +1,35 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: minmax(0, 236fr) minmax(0, 723fr) minmax(0, 392fr);
+  display: flex;
+  flex-direction: row;
+  flex: 236 723 392;
   grid-template-areas: "left main right";
   overflow: hidden;
   max-height: 100vh;
-
+  max-width: 1700px;
+  margin: auto;
   & > * {
     height: 100%;
     max-height: 100vh;
     overflow: scroll;
   }
 
-  .main {
+  .left {
+    flex-shrink: 0;
+    width: 236px;
+    min-width: 236px;
+    height: 100%;
+    min-height: 98vh;
+  }
+
+  .middle {
     background-color: $bg-dark;
     position: relative;
     padding: 26px 28px;
     overflow: hidden;
     overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
 
     &::after {
       content: "";
@@ -30,5 +43,13 @@
       display: block;
       background-color: $bg-darkest;
     }
+  }
+
+  .right {
+    flex-shrink: 0;
+    width: 392px;
+    min-width: 392px;
+    height: 100%;
+    min-height: 98vh;
   }
 }

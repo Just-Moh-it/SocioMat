@@ -1,6 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
 
 html,
 body {
@@ -18,11 +18,13 @@ a {
 }
 
 button,
+fieldset,
 *[role="button"] {
   border: none;
   color: inherit;
   cursor: pointer;
 }
+
 button {
   background-color: inherit;
 }
@@ -87,6 +89,26 @@ hr {
   }
 }
 
+// Text Colors
+.text-secondary {
+  color: $secondary;
+}
+.text-accent {
+  color: $accent;
+}
+
+// Text Styles
+.title-large {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 26px;
+}
+.title-small {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
 .text-large {
   font-weight: 700;
   font-size: 14.5px;
@@ -97,16 +119,10 @@ hr {
   font-size: 13px;
   line-height: 16px;
 }
-
-.text-secondary {
-  color: $secondary;
-}
 .small {
   font-size: 18px;
 }
-.text-accent {
-  color: $accent;
-}
+
 h1,
 h2,
 h3,
@@ -115,4 +131,101 @@ h5,
 h6,
 p {
   margin: 5px 0;
+}
+.auth-form {
+  // Form
+  .form {
+  }
+  .form-group {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    width: 100%;
+  }
+
+  .input-group {
+    background: $bg-dark;
+    border-radius: 15px;
+    padding: 10px 25px;
+    width: 100%;
+    flex: 1;
+
+    label {
+      width: 100%;
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      color: $primary-light;
+    }
+    span {
+      color: $primary-light;
+    }
+
+    input, textarea {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font: inherit;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 21px;
+      width: 100%;
+      max-width: 90%;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      /* identical to box height */
+
+      /* Primary */
+
+      color: #25396f;
+
+      &::placeholder {
+        color: unquote($primary + "50");
+      }
+    }
+  }
+
+  .label {
+    margin: 10px 0;
+    display: inline-block;
+
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: $primary;
+  }
+
+  button.primary {
+    padding: 9px 24px;
+
+    background: $accent;
+    box-shadow: 0px 7px 17px rgba(88, 185, 255, 0.25);
+    border-radius: 15px;
+    padding: 15px 30px;
+    margin-top: 30px;
+
+    font: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #ffffff;
+    &:hover {
+      filter: brightness(105%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .form-error {
+    color: $accent-2;
+  }
 }

@@ -6,8 +6,16 @@
   color: $primary-light;
 
   .tab {
+    position: relative;
     &.active {
       color: $secondary;
+    }
+    .underline {
+      position: absolute;
+      bottom: -2px;
+      height: 2px;
+      width: 100%;
+      background-color: $secondary;
     }
   }
 }

@@ -1,0 +1,119 @@
+.wrapper {
+  .cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2.8/1;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .avatar {
+    margin-top: -80px;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+
+  .userInfo {
+    display: inline-block;
+    margin: 16px 0 0 19px;
+    padding-top: -10px;
+    vertical-align: top;
+    & * {
+      margin: 0;
+    }
+
+    .name {
+      margin-bottom: 6px;
+      display: inline-block;
+      margin-right: 6px;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 22px;
+
+      color: $primary;
+    }
+
+    .username {
+      font-weight: 600;
+      color: $primary-light;
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
+
+  .accountInfoRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .stats {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+
+      .stat {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+
+        .statValue {
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 15px;
+          color: $primary;
+        }
+
+        .statKey {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 12px;
+          color: $primary-light;
+        }
+      }
+    }
+
+    .infoItems {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+
+      .infoItem {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 15px;
+        color: $primary;
+
+        .infoIcon {
+          flex-shrink: 0;
+        }
+
+        .infoValue {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 15px;
+          /* identical to box height */
+
+          /* Primary */
+
+          color: $primary;
+
+          flex: 1;
+          width: 100%;
+          min-width: 100px;
+          overflow: hidden;
+          max-height: 18px;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
