@@ -2,12 +2,17 @@
   .settingTab {
   }
 
+  .settingItem {
+    margin: 10px 0;
+    flex-direction: column;
+  }
+
   .themeElement {
     width: 138px;
     height: 94px;
     border-radius: 8px;
     position: relative;
-    background-color: $accent;
+    background-color: var(--accent);
     overflow: hidden;
 
     .image {

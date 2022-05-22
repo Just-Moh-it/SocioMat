@@ -7,9 +7,11 @@ import Avatar from "../../components/Avatar";
 import { useRouter } from "next/router";
 import Feed from "../../components/Feed";
 import Link from "next/link";
-import { appwrite } from "../../store/global";
+import { appwrite, userState } from "../../store/global";
 import { Query } from "appwrite";
 import Loader from "../../components/Loader";
+import { useRecoilState } from "recoil";
+import { amIFollowingUser } from "../../lib/appwrite/users";
 
 import Image from "next/image";
 import { toast } from "react-toastify";
@@ -21,9 +23,17 @@ const {
 
 const ProfilePage = () => {
   const router = useRouter();
-  const [profileInfo, setProfileInfo] = useState({ status: "loading" });
+  const [user] = useRecoilState(userState);
+  const [profileInfo, setProfileInfo] = useState({ state: "loading" });
 
   const { username } = router.query;
+
+  const isSelfProfile = username === user.$id;
+
+  console.log(
+    "Am I following user",
+    amIFollowingUser({ username: "john_wick" })
+  );
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -39,10 +49,10 @@ const ProfilePage = () => {
         if (queryData) {
           setProfileInfo({
             ...shapeData({ userData: queryData }),
-            status: "success",
+            state: "success",
           });
         } else {
-          setProfileInfo({ status: "not-found" });
+          setProfileInfo({ state: "not-found" });
         }
       } catch (error) {
         toast.error(`Unable to fetch user profile: ${error?.message}`);
@@ -52,13 +62,13 @@ const ProfilePage = () => {
     getUserInfo();
   }, [username]);
 
-  if (profileInfo.status === "loading") {
+  if (profileInfo.state === "loading") {
     return <Loader />;
-  } else if (profileInfo.status === "not-found") {
-    return <Loader>Not Found</Loader>;
-  } else if (profileInfo.status === "success")
+  } else if (profileInfo.state === "not-found") {
+    return <Loader showBack={true}>Not Found</Loader>;
+  } else if (profileInfo.state === "success")
     return (
-      <Layout title="Profile">
+      <Layout title="Profile" showProfileCard={false}>
         {/* Header */}
         <motion.div
           className={[styles.header, styles.hero].join(" ")}
@@ -66,7 +76,7 @@ const ProfilePage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <ProfileCard data={profileInfo} />
+          <ProfileCard data={profileInfo} isSelfProfile={isSelfProfile} />
         </motion.div>
 
         {/* Feed */}
@@ -75,7 +85,7 @@ const ProfilePage = () => {
     );
 };
 
-const ProfileCard = ({ data }) => {
+const ProfileCard = ({ data, isSelfProfile }) => {
   return (
     <div className={styles.wrapper}>
       {/* Cover Image */}
@@ -87,37 +97,42 @@ const ProfileCard = ({ data }) => {
           objectFit="cover"
         />
       </div>
+      <div className={styles.top}>
+        {/* Avatar */}
+        <div className={styles.avatar}>
+          <Avatar
+            avatarUri={data?.avatarUri}
+            hasUnseenStory={data?.hasUnseenStory}
+            height="160px"
+            width="160px"
+            outlineWidth="4px"
+            outlineOffset="8px"
+          />
+        </div>
+        {/* User Info */}
+        <section className={styles.userInfo}>
+          {/* Name */}
+          <span>
+            <span className={styles.name}>{data.name}</span>
+            {data?.isVerified && (
+              <Image
+                alt="image"
+                height={15}
+                width={15}
+                src="/assets/icons/filled/verify-badge.svg"
+              />
+            )}
+          </span>
+          {/* Username */}
+          <h4 className={styles.username}>@{data.username}</h4>
+        </section>
 
-      {/* Avatar */}
-      <div className={styles.avatar}>
-        <Avatar
-          avatarUri={data?.avatarUri}
-          hasUnseenStory={data?.hasUnseenStory}
-          height="160px"
-          width="160px"
-          outlineWidth="4px"
-          outlineOffset="8px"
-        />
+        {/* CTA Buttons */}
+        <div className={styles.buttons}>
+          <button className={["btn primary"].join(" ")}>Follow</button>
+          <button className={["btn outline"].join(" ")}>Follow</button>
+        </div>
       </div>
-
-      {/* User Info */}
-      <section className={styles.userInfo}>
-        {/* Name */}
-        <span>
-          <span className={styles.name}>{data.name}</span>
-          {data?.isVerified && (
-            <Image
-              alt="image"
-              height={15}
-              width={15}
-              src="/assets/icons/filled/verify-badge.svg"
-            />
-          )}
-        </span>
-
-        {/* Username */}
-        <h4 className={styles.username}>@{data.username}</h4>
-      </section>
 
       <p className={styles.bio}>{data?.bio}</p>
 
@@ -135,14 +150,16 @@ const ProfileCard = ({ data }) => {
         </section>
         {/* Info Items */}
         <section className={styles.infoItems}>
-          {data.infoItems.map(({ value, key, icon }) => (
-            <section key={key} className={styles.infoItem}>
-              <p className={styles.infoIcon}>{icon}</p>
-              <h4 className={styles.infoValue}>
-                {getShortInt(value) || "null"}
-              </h4>
-            </section>
-          ))}
+          {data.infoItems.map(
+            ({ value, key, icon }) =>
+              value &&
+              key && (
+                <section key={key} className={styles.infoItem}>
+                  <span className={styles.infoIcon}>{icon}</span>
+                  <h4 className={styles.infoValue}>{getShortInt(value)}</h4>
+                </section>
+              )
+          )}
         </section>
       </section>
 
@@ -156,7 +173,7 @@ const shapeData = ({ userData }) => ({
   hasUnseenStory: true,
   name: userData?.name,
   username: userData?.username,
-  avatarUri: userData?.avatar || "/assets/images/not-found-placeholder.png",
+  avatarUri: userData?.dp || "/assets/images/not-found-placeholder.png",
   isVerified: false,
   stats: {
     mats: 40,
@@ -166,7 +183,7 @@ const shapeData = ({ userData }) => ({
   following: true,
   infoItems: [
     {
-      value: userData?.location || "null",
+      value: userData?.location,
       icon: (
         <Image
           src="/assets/icons/outline/Location.svg"
@@ -179,7 +196,7 @@ const shapeData = ({ userData }) => ({
     },
     {
       value: (
-        <Link href={userData?.website || "null"}>
+        <Link href={userData?.website || "/"}>
           {userData?.website || "null"}
         </Link>
       ),
@@ -194,7 +211,7 @@ const shapeData = ({ userData }) => ({
       key: "website",
     },
     {
-      value: userData?.dob || "null",
+      value: userData?.dob,
       icon: (
         <Image
           src="/assets/icons/outline/Calendar.svg"
@@ -206,69 +223,65 @@ const shapeData = ({ userData }) => ({
       key: "dob",
     },
   ],
-  bio: "Student by the day, hobbyist by the night 😎 | Web App lover, Makeshift UI designer 🎨, emoji swain | 🎰 Hobbies → Habits | 💬 DMs appreciated",
+  bio: userData?.bio || "404 Bio not found :(",
 });
 
-const selfData = {
-  username: "mohit2004",
-};
-
-const data = {
-  coverUri:
-    "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
-  hasUnseenStory: true,
-  name: "Mohit Yadav",
-  username: "mohit_yadav",
-  avatarUri:
-    "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
-  isVerified: true,
-  stats: {
-    mats: 40,
-    followers: 4506,
-    following: 1375,
-  },
-  following: true,
-  infoItems: [
-    {
-      value: "13, Hogwarts Pavement, London",
-      icon: (
-        <Image
-          src="/assets/icons/outline/Location.svg"
-          width="24"
-          alt="location"
-          height="24"
-        />
-      ),
-      key: "location",
-    },
-    {
-      value: (
-        <Link href="https://mohityadav.codes">https://mohityadav.codes</Link>
-      ),
-      icon: (
-        <Image
-          src="/assets/icons/outline/Link.svg"
-          width="24"
-          alt="location"
-          height="24"
-        />
-      ),
-      key: "website",
-    },
-    {
-      value: "13/09/2004",
-      icon: (
-        <Image
-          src="/assets/icons/outline/Calendar.svg"
-          width="24"
-          alt="location"
-          height="24"
-        />
-      ),
-      key: "dob",
-    },
-  ],
-  bio: "Student by the day, hobbyist by the night 😎 | Web App lover, Makeshift UI designer 🎨, emoji swain | 🎰 Hobbies → Habits | 💬 DMs appreciated",
-};
+// const data = {
+//   coverUri:
+//     "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80",
+//   hasUnseenStory: true,
+//   name: "Mohit Yadav",
+//   username: "mohit_yadav",
+//   avatarUri:
+//     "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
+//   isVerified: true,
+//   stats: {
+//     mats: 40,
+//     followers: 4506,
+//     following: 1375,
+//   },
+//   following: true,
+//   infoItems: [
+//     {
+//       value: "13, Hogwarts Pavement, London",
+//       icon: (
+//         <Image
+//           src="/assets/icons/outline/Location.svg"
+//           width="24"
+//           alt="location"
+//           height="24"
+//         />
+//       ),
+//       key: "location",
+//     },
+//     {
+//       value: (
+//         <Link href="https://mohityadav.codes">https://mohityadav.codes</Link>
+//       ),
+//       icon: (
+//         <Image
+//           src="/assets/icons/outline/Link.svg"
+//           width="24"
+//           alt="location"
+//           height="24"
+//         />
+//       ),
+//       key: "website",
+//     },
+//     {
+//       value: "13/09/2004",
+//       icon: (
+//         <Image
+//           src="/assets/icons/outline/Calendar.svg"
+//           width="24"
+//           alt="location"
+//           height="24"
+//         />
+//       ),
+//       key: "dob",
+//     },
+//   ],
+//   bio: "Student by the day, hobbyist by the night 😎 | Web App lover, Makeshift UI designer 🎨, emoji swain | 🎰 Hobbies → Habits | 💬 DMs appreciated",
+// };
 
 export default ProfilePage;

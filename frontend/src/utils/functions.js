@@ -28,3 +28,4 @@ export const convertToHyphenCase = (url) => {
   // Convert to hyphen case
   return split.map((path) => path.toLowerCase()).join("-");
 };
+

@@ -16,6 +16,7 @@ export const Server = {
   collections: {
     users: process.env.NEXT_PUBLIC_USERS_COLLECTION,
     mats: process.env.NEXT_PUBLIC_MATS_COLLECTION,
+    follows: process.env.NEXT_PUBLIC_FOLLOWS_COLLECTION,
   },
 };
 

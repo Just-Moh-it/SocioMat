@@ -8,29 +8,37 @@ const CustomRadioList = ({
   isShowingChecks,
   borderRadius,
   labels,
+  childProps,
   ...props
 }) => {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   return (
-    <fieldset className={styles.wrapper}>
-      {children.map(({ ele, label, outlineColor }, idx) => (
-        <Element
-          key={uuid()}
-          className={styles.item}
-          child={ele}
-          label={label}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          outlineColor={outlineColor}
-          setSelectedIdx={setSelectedIdx}
-          selectedIdx={selectedIdx}
-          idx={idx}
-          borderRadius={borderRadius}
-          isShowingChecks={isShowingChecks}
-        />
-      ))}
-    </fieldset>
+    <form {...props}>
+      <fieldset className={styles.wrapper}>
+        {children.map(
+          ({ ele, label, outlineColor, value, defaultChecked }, idx) => (
+            <Element
+              key={uuid()}
+              className={styles.item}
+              child={ele}
+              label={label}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              outlineColor={outlineColor}
+              setSelectedIdx={setSelectedIdx}
+              selectedIdx={selectedIdx}
+              idx={idx}
+              borderRadius={borderRadius}
+              isShowingChecks={isShowingChecks}
+              value={value}
+              defaultChecked={defaultChecked}
+              {...childProps}
+            />
+          )
+        )}
+      </fieldset>
+    </form>
   );
 };
 
@@ -45,16 +53,23 @@ const Element = ({
   selectedIdx,
   idx,
   borderRadius,
+  value,
   isShowingChecks,
+  defaultChecked,
+  selected,
   ...props
 }) => {
   const content = (
-    <motion.label {...props} style={{ cursor: "pointer" }}>
+    <motion.label style={{ cursor: "pointer" }}>
       <input
         type="radio"
         name="test"
-        value="big"
-        onChange={() => setSelectedIdx(idx)}
+        value={value}
+        defaultChecked={defaultChecked}
+        {...props}
+        onChange={() => {
+          setSelectedIdx(idx);
+        }}
         checked={selectedIdx === idx}
       />
       <div

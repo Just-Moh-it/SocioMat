@@ -7,14 +7,18 @@ body {
   margin: 0;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: $bg-dark;
-  color: $primary;
+  background-color: var(--bg-dark);
+  color: var(--primary);
   font-size: 14px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+[stroke="#25396F"] {
+  stroke: var(--primary) !important;
 }
 
 button,
@@ -39,7 +43,7 @@ li {
 
 hr {
   border: none;
-  border-top: 1px solid $bg-darkest;
+  border-top: 1px solid var(--bg-darkest);
 }
 
 .btn {
@@ -61,40 +65,40 @@ hr {
   }
 
   &.primary {
-    background: $secondary;
-    color: $bg;
+    background: var(--secondary);
+    color: var(--bg);
   }
 
   &.outline {
     background: transparent;
-    outline: 2px solid $secondary;
+    outline: 2px solid var(--secondary);
     outline-offset: -2px;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &.secondary {
     background: transparent;
-    color: $secondary;
+    color: var(--secondary);
     border: 2px solid transparent;
 
     &:hover {
-      background-color: unquote($secondary + "19");
+      background-color: unquote(var(--secondary) + "19");
     }
   }
 
   &.accent {
-    background: $accent;
-    color: $bg;
+    background: var(--accent);
+    color: var(--bg);
     box-shadow: 0px 7px 17px rgba(88, 185, 255, 0.25);
   }
 }
 
 // Text Colors
 .text-secondary {
-  color: $secondary;
+  color: var(--secondary);
 }
 .text-accent {
-  color: $accent;
+  color: var(--accent);
 }
 
 // Text Styles
@@ -132,21 +136,21 @@ h6,
 p {
   margin: 5px 0;
 }
-.auth-form {
+.auth-form,
+.form {
   // Form
-  .form {
-  }
   .form-group {
     margin: 15px 0;
     display: flex;
     align-items: center;
+    // flex-direction: column;
     justify-content: space-between;
     gap: 35px;
     width: 100%;
   }
 
   .input-group {
-    background: $bg-dark;
+    background: var(--bg-dark);
     border-radius: 15px;
     padding: 10px 25px;
     width: 100%;
@@ -159,13 +163,14 @@ p {
       font-weight: 700;
       font-size: 13px;
       line-height: 16px;
-      color: $primary-light;
+      color: var(--primary-light);
     }
     span {
-      color: $primary-light;
+      color: var(--primary-light);
     }
 
-    input, textarea {
+    input,
+    textarea {
       background-color: transparent;
       border: none;
       outline: none;
@@ -182,10 +187,10 @@ p {
 
       /* Primary */
 
-      color: #25396f;
+      color: var(--primary);
 
-      &::placeholder {
-        color: unquote($primary + "50");
+      &:placeholder {
+        color: unquote(var(--primary) + "10");
       }
     }
   }
@@ -197,13 +202,13 @@ p {
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
-    color: $primary;
+    color: var(--primary);
   }
 
   button.primary {
     padding: 9px 24px;
 
-    background: $accent;
+    background: var(--accent);
     box-shadow: 0px 7px 17px rgba(88, 185, 255, 0.25);
     border-radius: 15px;
     padding: 15px 30px;
@@ -214,7 +219,7 @@ p {
     font-size: 16px;
     line-height: 22px;
 
-    color: #ffffff;
+    color: var(--bg);
     &:hover {
       filter: brightness(105%);
     }
@@ -223,9 +228,13 @@ p {
       opacity: 0.5;
       cursor: not-allowed;
     }
+
+    &.no-margin {
+      margin: 0;
+    }
   }
 
   .form-error {
-    color: $accent-2;
+    color: var(--accent-2);
   }
 }

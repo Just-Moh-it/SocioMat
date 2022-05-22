@@ -6,10 +6,10 @@ const Footer = () => {
     <div className={styles.wrapper}>
       <nav className={styles.list}>
         {footerData.map((footerItemData, idx) => (
-          <>
+          <div key={idx}>
             <FooterItem {...footerItemData} />
             {idx + 1 !== footerData?.length && <p>&bull;</p>}
-          </>
+          </div>
         ))}
       </nav>
     </div>

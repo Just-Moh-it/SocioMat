@@ -15,7 +15,7 @@
 
     &.seen {
       outline-offset: 3px;
-      outline: 3px solid $secondary;
+      outline: 3px solid var(--secondary);
     }
   }
 

@@ -74,7 +74,11 @@ const AuthLayout = ({
           </div>
         </section>
         <section className={styles.right}>
-          <Image src="/assets/images/utils/cover-auth.svg" layout="fill" />
+          <Image
+            src="/assets/images/utils/cover-auth.svg"
+            layout="fill"
+            alt="Auth Cover"
+          />
         </section>
       </section>
     </>

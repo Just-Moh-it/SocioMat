@@ -1,40 +1,50 @@
 import styles from "./index.module.scss";
-import { useState } from "react";
 import Image from "next/image";
-import Alert from "../../Modal";
+import { modalState } from "../../../store/global";
+import { useRecoilState } from "recoil";
+import NotImplemented from "../../NotImplemented";
 
 const StoryItem = ({ id, username, avatar, seen, ...props }) => {
-  const [isShowingStory, setIsShowingStory] = useState(false);
+  const [modal, setModal] = useRecoilState(modalState);
+
+  const toggleModal = () => {
+    console.log("Modal Toggled");
+    setModal({
+      isOpen: !modal.isOpen,
+      content: <ModalContent />,
+    });
+  };
 
   return (
-    <button
+    <div
+      // role="button"
       onClick={() => {
-        setIsShowingStory(true);
+        console.log("Toggling modal");
+        toggleModal();
       }}
       className={styles.wrapper}
     >
       {/* Avatar */}
       <div className={[styles.avatar, seen ? styles.seen : ""].join(" ")}>
-        <Image alt="image" src={avatar} layout="fill" />
+        <Image
+          alt="image"
+          src={avatar}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
       </div>
 
       {/* Username */}
       <p className={[styles.username].join(" ")}>{username}</p>
-
-      {isShowingStory && (
-        <Alert
-          onClose={() => {
-            console.log("Not showing");
-            setIsShowingStory(false);
-          }}
-        >
-          Story!
-        </Alert>
-      )}
-    </button>
+    </div>
   );
 };
 
-const data = {};
+const ModalContent = () => (
+  <div>
+    <NotImplemented />
+  </div>
+);
 
 export default StoryItem;

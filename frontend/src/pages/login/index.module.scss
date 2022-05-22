@@ -21,7 +21,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background: url('/assets/icons/utils/separator.svg');
+    background: url("/assets/icons/utils/separator.svg");
     // Repeat in horizonal direction with fixed width
     background-repeat: repeat-x;
     // Align the background in center
@@ -31,7 +31,7 @@
     position: relative;
 
     .text {
-      background-color: $bg;
+      background-color: var(--bg);
       padding: 0 10px;
 
       font-weight: 600;
@@ -41,7 +41,7 @@
 
       text-align: center;
 
-      color: $primary-light;
+      color: var(--primary-light);
     }
   }
 }

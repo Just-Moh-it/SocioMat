@@ -6,9 +6,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
+    margin-bottom: 20px;
 
     .outline {
-      border: 2px solid #dfeeff;
+      border: 2px solid var(--bg-darkest);
     }
 
     .rounded {
@@ -27,7 +28,7 @@
       input {
         border: none;
         background-color: transparent;
-        color: $primary-light;
+        color: var(--primary-light);
         font-weight: 700;
         font-size: 14px;
         line-height: 16px;
@@ -36,7 +37,7 @@
         width: 100%;
 
         &::placeholder {
-          color: $primary-light;
+          color: var(--primary-light);
         }
       }
     }
@@ -46,8 +47,8 @@
     }
 
     .accentButton {
-      background-color: $accent;
-      color: $bg;
+      background-color: var(--accent);
+      color: var(--bg);
       box-shadow: 0px 7px 17px rgba(88, 185, 255, 0.25);
 
       img {

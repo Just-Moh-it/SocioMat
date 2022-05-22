@@ -16,12 +16,17 @@ const Layout = ({
   children,
   heading,
   noSidebar,
+  showProfileCard,
 }) => {
   const router = useRouter();
   const [user] = useRecoilState(userState);
 
-  if (user.status === "loading") return <Loader />;
-  else if (user.status === "unauthenticated" && isProtected) {
+  if (user.state === "loading") {
+    return <Loader />;
+  } else if (user.state === "authenticated" && !user.prefs?.initialized) {
+    router.push("/onboarding");
+    return <Loader />;
+  } else if (user.state === "unauthenticated" && isProtected) {
     router.push("/login");
     return <Loader />;
   }
@@ -72,7 +77,7 @@ const Layout = ({
         </main>
         {!noSidebar && (
           <div className={styles.right}>
-            <RightSidebar />
+            <RightSidebar showProfileCard={showProfileCard} />
           </div>
         )}
       </section>

@@ -8,7 +8,7 @@
   margin-bottom: auto;
 
   &.hasUnseenStory {
-    outline: 3px solid $secondary;
-    border: 3px solid $bg-dark;
+    outline: 3px solid var(--secondary);
+    border: 3px solid var(--bg-dark);
   }
 }

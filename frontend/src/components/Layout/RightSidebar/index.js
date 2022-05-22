@@ -1,6 +1,7 @@
 import styles from "./index.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 // Components
 import ProfileCard from "./ProfileCard";
@@ -8,7 +9,8 @@ import NewPost from "./NewPost";
 import Suggestions from "./Suggestions";
 import Footer from "./Footer";
 
-const RightSidebar = () => {
+const RightSidebar = ({ showProfileCard = true }) => {
+  const router = useRouter();
   return (
     <div className={styles.wrapper}>
       {/* Header */}
@@ -47,7 +49,7 @@ const RightSidebar = () => {
         {/* Upload */}
         <div
           role="button"
-          onClick={() => console.log("Upload requested")}
+          onClick={() => router.push("/create")}
           className={[styles.accentButton, styles.rounded, styles.button].join(
             " "
           )}
@@ -62,10 +64,12 @@ const RightSidebar = () => {
       </section>
 
       {/* Profile Card */}
-      <section className={styles.profileCard}>
-        <ProfileCard />
-        <NewPost />
-      </section>
+      {showProfileCard && (
+        <section className={styles.profileCard}>
+          <ProfileCard />
+          <NewPost />
+        </section>
+      )}
 
       {/* Suggestions */}
       <section className={styles.suggestions}>

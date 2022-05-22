@@ -17,7 +17,7 @@ const Suggestions = () => {
       </div>
       <ul className={styles.list}>
         {data.map((i) => (
-          <SuggestionItem key={i.id} {...i} />
+          <SuggestionItem key={i.id || Math.random()} {...i} />
         ))}
       </ul>
     </div>

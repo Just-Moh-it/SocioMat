@@ -4,7 +4,7 @@
   height: 100%;
 
   .leftWrapper {
-    border-right: 1px solid $bg-darkest;
+    border-right: 1px solid var(--bg-darkest);
     max-width: 260px;
     padding: 0 15px 0 0;
     min-width: 200px;
@@ -35,7 +35,7 @@
         font-size: 13px;
         font-weight: 600;
         line-height: 16px;
-        color: $primary-light;
+        color: var(--primary-light);
         text-align: left;
         transition: all 0.2s ease-in-out;
 
@@ -45,12 +45,12 @@
         }
 
         &:not(.active):hover {
-          background-color: unquote($primary + "07");
+          background-color: unquote(var(--primary) + "07");
         }
 
         &.active {
-          background-color: $bg;
-          color: $primary;
+          background-color: var(--bg);
+          color: var(--primary);
 
           img {
             filter: brightness(0) saturate(100%) invert(59%) sepia(47%)

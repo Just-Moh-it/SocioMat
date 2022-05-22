@@ -80,7 +80,7 @@ const SignUp = () => {
             </div>
             {errors?.firstName ||
               (errors?.lastName && (
-                <p className="form-error">C'mon, enter a valid email</p>
+                <p className="form-error">C&apos;mon, enter a valid email</p>
               ))}
           </div>
           <div className={"form-group"}>
@@ -99,7 +99,7 @@ const SignUp = () => {
               />
             </div>
             {errors?.email && (
-              <p className="form-error">C'mon, enter a valid email</p>
+              <p className="form-error">C&apos;mon, enter a valid email</p>
             )}
           </div>
           <div className={"form-group"}>
@@ -114,7 +114,7 @@ const SignUp = () => {
               />
             </div>
             {errors?.password && (
-              <p className="form-error">Oof... Password can't be blank</p>
+              <p className="form-error">Oof... Password can&apos;t be blank</p>
             )}
           </div>
           <div className="form-group">

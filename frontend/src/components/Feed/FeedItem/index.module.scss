@@ -1,7 +1,7 @@
 .wrapper {
   padding: 25px;
 
-  background: $bg;
+  background: var(--bg);
   border-radius: 20px;
   margin: 20px 0;
 
@@ -26,7 +26,7 @@
         .username {
           font-size: 14px;
           font-weight: 600;
-          color: $primary-light;
+          color: var(--primary-light);
           line-height: 16px;
         }
       }
@@ -65,7 +65,7 @@
 
       /* Primary */
 
-      color: #25396f;
+      color: var(--primary);
     }
   }
 
@@ -76,7 +76,7 @@
     gap: 13px;
 
     .commentInput {
-      background-color: $bg-dark;
+      background-color: var(--bg-dark);
       border-radius: 50px;
       padding: 11px 16px;
       display: flex;
@@ -86,7 +86,7 @@
       input {
         border: none;
         background-color: transparent;
-        color: $primary;
+        color: var(--primary);
         font-size: 14px;
         line-height: 16px;
         font-weight: 600;
@@ -94,7 +94,7 @@
         outline: none;
 
         &::placeholder {
-          color: $primary-light;
+          color: var(--primary-light);
         }
       }
 
@@ -127,7 +127,7 @@
   padding: 5px;
 
   &:hover {
-    background-color: $bg-dark;
+    background-color: var(--bg-dark);
   }
 }
 
@@ -140,7 +140,7 @@
   border-radius: 100px;
   height: 100%;
   gap: 3px;
-  color: $primary-light;
+  color: var(--primary-light);
 
   .image {
     flex-shrink: 0;
@@ -152,6 +152,6 @@
   }
 
   &:hover {
-    background-color: $bg-dark;
+    background-color: var(--bg-dark);
   }
 }

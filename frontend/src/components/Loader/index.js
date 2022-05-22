@@ -13,6 +13,7 @@ const Loader = ({ children, showBack = false }) => {
               src="/assets/icons/filled/back-btn.svg"
               height="25"
               width="25"
+              alt="back"
             />
             <span>Home</span>
           </a>
@@ -21,8 +22,8 @@ const Loader = ({ children, showBack = false }) => {
       <motion.section
         className={styles.wrapper}
         initial={{ y: 10, opacity: 0 }}
-        transition={{ ease: "easeInOut", duration: 0.1 }}
-        exit={{ y: 10, opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.2 }}
+        exit={{ y: 10, opacity: 1, scale: 0.8 }}
         animate={{ opacity: 1, y: 0 }}
       >
         <Image

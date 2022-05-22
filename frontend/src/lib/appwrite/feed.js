@@ -26,7 +26,24 @@ export const getMatsByUsername = async (
       [Query.equal("userId", userId)],
       { ...extras }
     );
-    
+
+    return matsData;
+  } catch (error) {
+    return toast.error(error?.message);
+  }
+};
+
+const getFeed = async () => {
+  try {
+    const userId = await getUserIdFromUsername(username);
+
+    // Get all mats
+    const matsData = await appwrite.database.listDocuments(
+      "mats",
+      [Query.equal("userId", userId)],
+      { ...extras }
+    );
+
     return matsData;
   } catch (error) {
     return toast.error(error?.message);

@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { appwrite, userState } from "../../store/global";
 import AuthLayout from "../../components/Authlayout";
+import { useTheme } from "next-themes";
 
 const Login = () => {
   const {
@@ -19,6 +20,7 @@ const Login = () => {
   } = useForm();
   const [user, setUser] = useRecoilState(userState);
   const router = useRouter();
+  const { setTheme, theme } = useTheme();
 
   const onSubmit = async ({ email, password }) => {
     try {
@@ -33,7 +35,7 @@ const Login = () => {
     try {
       const res = await appwrite.account.createOAuth2Session(
         provider,
-        "http://localhost:3000",
+        "http://localhost:3000/onboarding",
         "http://localhost:3000/login"
       );
     } catch (error) {
@@ -121,7 +123,7 @@ const Login = () => {
               />
             </div>
             {errors?.email && (
-              <p className="form-error">C'mon, enter a valid email</p>
+              <p className="form-error">C&apos;mon, enter a valid email</p>
             )}
           </div>
           <div className={"form-group"}>
@@ -136,7 +138,7 @@ const Login = () => {
               />
             </div>
             {errors?.password && (
-              <p className="form-error">Oof... Password can't be blank</p>
+              <p className="form-error">Oof... Password can&apos;t be blank</p>
             )}
           </div>
           <div className="form-group">

@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: false,
   sassOptions: {
     includePaths: [path.join(__dirname, "src/styles")],
-    prependData: `@import "variables.scss";`,
+    prependData: `@import "_theme.scss";`,
   },
   images: {
     domains: [
@@ -14,6 +14,8 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "res.cloudinary.com",
       "images.unsplash.com",
+      "localhost",
+      "avatars.dicebear.com",
     ],
   },
 };

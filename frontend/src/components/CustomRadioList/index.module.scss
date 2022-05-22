@@ -19,7 +19,7 @@
     border-radius: 8px;
     outline: none;
     outline-offset: 3px;
-    outline-color: $secondary;
+    outline-color: var(--secondary);
   }
 
   /* CHECKED STYLES */
@@ -39,7 +39,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background-color: $secondary;
+      background-color: var(--secondary);
       color: white;
     }
   }
@@ -53,6 +53,6 @@
 
     /* Primary */
 
-    color: #25396f;
+    color: var(--primary);
   }
 }

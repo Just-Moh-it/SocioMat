@@ -1,5 +1,5 @@
 .wrapper {
-  color: $primary-light;
+  color: var(--primary-light);
   font-size: 11px;
   line-height: 13px;
 
@@ -8,5 +8,13 @@
     align-items: center;
     justify-content: flex-start;
     gap: 7px;
+
+    * {
+      display: inline-block;
+    }
+
+    p {
+      margin-left: 5px;
+    }
   }
 }

@@ -1,6 +1,8 @@
 .wrapper {
   z-index: 100;
   position: absolute;
+  cursor: default;
+
   .overlay {
     position: fixed;
     top: 0;
@@ -8,15 +10,45 @@
     right: 0;
     bottom: 0;
 
-    background-color: #00000050;
+    background-color: unquote(var(--bg) + "50");
+    backdrop-filter: blur(3px);
   }
 
-  .modal {
+  .modalParent {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 50px;
-    border-radius: 100px;
+
+    .rightButtons {
+      margin-left: auto;
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: var(--error-light);
+        border-radius: 50%;
+
+        img {
+          filter: brightness(0) saturate(100%) invert(26%) sepia(62%)
+            saturate(1735%) hue-rotate(337deg) brightness(95%) contrast(82%);
+        }
+      }
+    }
+
+    .modal {
+      background-color: var(--bg);
+
+      padding: 20px;
+      min-width: 300px;
+      min-height: 150px;
+      border-radius: 15px;
+    }
   }
 }

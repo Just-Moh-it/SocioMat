@@ -3,6 +3,8 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import { appwrite } from "../../store/global";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { useTheme } from "next-themes";
 
 import { themeColors } from "../../utils/constants";
 
@@ -17,7 +19,7 @@ const SettingsPage = () => {
     await appwrite.account.deleteSession("current");
     window.localStorage.removeItem("jwt");
     window.localStorage.removeItem("jwt_expire");
-    router.push("/");
+    router.push("/login");
   };
 
   return (
@@ -74,56 +76,80 @@ const SettingsPage = () => {
 };
 
 const AppearancePage = () => {
+  const { theme, setTheme } = useTheme();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      theme: "system",
+      accent: "#a974ff",
+    },
+  });
+
   return (
-    <article className={["page"].join(" ")}>
+    <article className={["page", styles.wrapper].join(" ")}>
       <h3 className="text-small title">Appearance</h3>
       <section className={styles.settingTab}>
         <form className={["form"].join(" ")}>
           {/* Accent Color */}
-          <div className={"form-group"}>
-            <label className="label" for="theme-selector">
+          <div className={styles.settingItem}>
+            <label className="label" htmlFor="theme-selector">
               Choose your Accent Color
             </label>
             <CustomRadioList
               borderRadius="50%"
               id="theme-selector"
-              children={themeColors.map((color) => ({
+              childProps={{
+                ...register("accent"),
+              }}
+              onChange={() => {
+                handleSubmit((data) => console.log("data", data))();
+              }}
+            >
+              {themeColors.map((color) => ({
                 ele: <Circle color={color} />,
                 outlineColor: color,
+                value: color,
               }))}
-            />
+            </CustomRadioList>
           </div>
 
           {/* Theme Color */}
-          <div className={"form-group"}>
-            <label className="label" for="theme-selector">
+          <div className={styles.settingItem}>
+            <label className="label" htmlFor="theme-selector">
               Choose your theme
             </label>
             <CustomRadioList
               id="themexa"
               isShowingChecks
               boderRadius="8px"
-              children={[
+              childProps={{
+                onClick: (e) => setTheme(e.target.value),
+              }}
+            >
+              {[
                 {
                   ele: (
                     <ThemeElement src="/assets/images/utils/system-theme.svg" />
                   ),
                   label: "System",
+                  value: "system",
                 },
                 {
                   ele: (
                     <ThemeElement src="/assets/images/utils/light-theme.svg" />
                   ),
                   label: "Light",
+                  value: "light",
                 },
                 {
                   ele: (
                     <ThemeElement src="/assets/images/utils/dark-theme.svg" />
                   ),
                   label: "Dark",
+                  value: "dark",
+                  defaultChecked: true,
                 },
               ]}
-            />
+            </CustomRadioList>
           </div>
         </form>
       </section>

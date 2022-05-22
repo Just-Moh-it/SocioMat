@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
-import { appwrite, userState } from "../../store/global";
+import { appwrite, userState, publicUserInfoState } from "../../store/global";
 import AuthLayout from "../../components/Authlayout";
 import { checkDuplicateUsername } from "../../lib/appwrite/users";
 import Image from "next/image";
@@ -20,9 +20,10 @@ const Onboard = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm();
   const [user, setUser] = useRecoilState(userState);
+  const [publicUserInfo, setPublicUserInfo] =
+    useRecoilState(publicUserInfoState);
   const router = useRouter();
   const [isUsernameUnique, setIsUsernameUnique] = useState(false);
 
@@ -40,7 +41,7 @@ const Onboard = () => {
     };
 
     initialize();
-  }, [user]);
+  }, [user, router]);
 
   const onSubmit = async ({ username, name }) => {
     try {
@@ -57,7 +58,7 @@ const Onboard = () => {
       const payload = {
         username,
         name,
-        dp: (await appwrite.avatars.getInitials()).href,
+        dp: `https://avatars.dicebear.com/api/pixel-art-neutral/${username}.png?r=50&scale=82`,
       };
 
       const updatedUserData = await appwrite.database.createDocument(
@@ -66,7 +67,7 @@ const Onboard = () => {
         payload
       );
 
-      setUser(updatedUserData);
+      setPublicUserInfo(updatedUserData);
       toast.success("Info updated successfully");
       router.push("/");
     } catch (error) {
@@ -87,7 +88,7 @@ const Onboard = () => {
           Initialize your account<span className="text-accent">.</span>
         </p>
       }
-      subheading="LET'S GET STARTED 🏁"
+      subheading="LET&apos;S GET STARTED 🏁"
     >
       <div className={styles.wrapper}>
         {/* Onboard Form */}
@@ -134,7 +135,7 @@ const Onboard = () => {
               )}
             </div>
             {errors?.username && (
-              <p className="form-error">C'mon, enter a valid username</p>
+              <p className="form-error">C&apos;mon, enter a valid username</p>
             )}
           </div>
           <div className={"form-group"}>
@@ -153,7 +154,7 @@ const Onboard = () => {
               />
             </div>
             {errors?.name && (
-              <p className="form-error">C'mon, enter a valid name</p>
+              <p className="form-error">C&apos;mon, enter a valid name</p>
             )}
           </div>
           <div className="form-group">
@@ -163,7 +164,7 @@ const Onboard = () => {
               disabled={!isUsernameUnique}
               title={isUsernameUnique && "Enter correct username"}
             >
-              Let's go
+              Let&apos;s go
             </button>
           </div>
         </form>

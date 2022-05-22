@@ -8,10 +8,18 @@ export const appwrite = new Appwrite()
 
 export const userState = atom({
   key: "user",
-  default: { status: "loading" },
+  default: { state: "loading" },
 });
 
 export const publicUserInfoState = atom({
   key: "publicUserInfo",
   default: {},
+});
+
+export const modalState = atom({
+  key: "modalState",
+  default: {
+    isOpen: false,
+    content: <></>,
+  },
 });

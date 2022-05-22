@@ -8,7 +8,7 @@
   overflow: hidden;
   max-height: 100vh;
   margin: auto;
-  background-color: $bg;
+  background-color: var(--bg);
 
   & > * {
     height: 100%;
@@ -40,10 +40,10 @@
         font-weight: 500;
         font-size: 17px;
         line-height: 21px;
-        color: $primary-light;
+        color: var(--primary-light);
         transition: 0.2s all ease-in-out;
         &:hover {
-          color: $primary;
+          color: var(--primary);
         }
       }
     }
@@ -84,8 +84,7 @@
 
           /* Primary-light */
 
-          color: $primary-light;
-
+          color: var(--primary-light);
         }
       }
 

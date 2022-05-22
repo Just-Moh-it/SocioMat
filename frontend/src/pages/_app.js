@@ -1,9 +1,18 @@
 import { useEffect } from "react";
 import { RecoilRoot, useRecoilState, useRecoilSnapshot } from "recoil";
-import { appwrite, userState } from "../store/global";
+import {
+  appwrite,
+  publicUserInfoState,
+  userState,
+  modalState,
+} from "../store/global";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import { Server } from "../utils/constants";
+import { getUserInfoById } from "../lib/appwrite/users";
+import { ThemeProvider } from "next-themes";
+import { AnimatePresence } from "framer-motion";
+import Alert from "../components/Modal";
 
 import "../styles/globals.scss";
 import "../styles/markdown.scss";
@@ -15,42 +24,45 @@ const {
 
 const App = ({ Component, pageProps }) => {
   return (
-    <RecoilRoot>
-      <UserStateWrapper>
-        <Component {...pageProps} />
-        <ToastContainer />
-      </UserStateWrapper>
-    </RecoilRoot>
+    <AnimatePresence>
+      <ThemeProvider attribute="class">
+        <RecoilRoot>
+          <UserStateWrapper>
+            <Component {...pageProps} />
+            <ToastContainer />
+            <ModalHandler />
+          </UserStateWrapper>
+        </RecoilRoot>
+      </ThemeProvider>
+    </AnimatePresence>
   );
 };
 
 const UserStateWrapper = ({ children }) => {
   const [user, setUser] = useRecoilState(userState);
+  const [publicUserInfo, setPublicUserInfo] =
+    useRecoilState(publicUserInfoState);
   const router = useRouter();
-
-  const getUserInfo = async () => {
-    if (user.$id) {
-      const account = await appwrite.database.getDocument(
-        usersCollectionId,
-        user.$id
-      );
-      console.log("Account info", account);
-    }
-  };
 
   useEffect(() => {
     appwrite.account.get().then(
-      (response) => {
-        setUser({ status: "authenticated", ...response });
-        getUserInfo();
+      async (response) => {
+        setUser({ state: "authenticated", ...response });
+        if (response?.$id) {
+          const pUserInfo = await getUserInfoById(response?.$id);
+
+          if (pUserInfo.username) {
+            setPublicUserInfo(pUserInfo);
+          }
+        }
       },
       () => {
         console.log("Not logged in");
-        setUser({ status: "unauthenticated" });
+        setUser({ state: "unauthenticated" });
         router.push("/login");
       }
     );
-  }, []);
+  }, [router, setUser, setPublicUserInfo]);
 
   return (
     <>
@@ -70,6 +82,12 @@ const Debugger = ({ children }) => {
   }, [snapshot]);
 
   return children;
+};
+
+const ModalHandler = () => {
+  const [modal, setModal] = useRecoilState(modalState);
+
+  if (modal.isOpen) return <Alert content={modal?.content} />;
 };
 
 export default App;

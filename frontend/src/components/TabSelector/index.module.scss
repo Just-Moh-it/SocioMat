@@ -3,19 +3,19 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  color: $primary-light;
+  color: var(--primary-light);
 
   .tab {
     position: relative;
     &.active {
-      color: $secondary;
+      color: var(--secondary);
     }
     .underline {
       position: absolute;
       bottom: -2px;
       height: 2px;
       width: 100%;
-      background-color: $secondary;
+      background-color: var(--secondary);
     }
   }
 }

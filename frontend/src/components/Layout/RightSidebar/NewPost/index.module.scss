@@ -1,10 +1,10 @@
 .wrapper {
   .input {
     border-radius: 8px;
-    background-color: $bg;
+    background-color: var(--bg);
     font: inherit;
     border: none;
-    color: $primary-light;
+    color: var(--primary-light);
     font-weight: 600;
     font-size: 11px;
     line-height: 13px;
@@ -15,7 +15,7 @@
 
     &::placeholder {
       font: inherit;
-      color: $primary-light;
+      color: var(--primary-light);
     }
   }
 
@@ -28,10 +28,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: $primary;
+      color: var(--primary);
       font-weight: 600;
       font-family: inherit;
-      background-color: $bg;
+      background-color: var(--bg);
       border-radius: 8px;
     }
   }

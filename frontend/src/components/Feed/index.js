@@ -27,6 +27,7 @@ const Feed = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 + 0.1 * idx, easing: "easeInOut" }}
+            key={idx}
           >
             <FeedItem key={Math.random()} {...feedItem} />
           </motion.div>

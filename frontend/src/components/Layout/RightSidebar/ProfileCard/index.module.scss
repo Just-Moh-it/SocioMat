@@ -27,7 +27,7 @@
       font-weight: 600;
       font-size: 13px;
       line-height: 16px;
-      color: $primary;
+      color: var(--primary);
       margin-bottom: 3px;
       margin-right: 6px;
     }
@@ -36,7 +36,7 @@
       font-weight: 600;
       font-size: 11px;
       line-height: 13px;
-      color: $primary-light;
+      color: var(--primary-light);
     }
   }
 
@@ -55,7 +55,7 @@
         font-size: 14px;
         line-height: 17px;
         text-align: center;
-        color: $primary;
+        color: var(--primary);
       }
 
       .statKey {
@@ -64,7 +64,7 @@
         line-height: 13px;
         text-align: center;
 
-        color: $primary-light;
+        color: var(--primary-light);
       }
     }
   }

@@ -1,5 +1,5 @@
 .wrapper {
-  color: $primary;
+  color: var(--primary);
 
   .header {
     display: flex;
@@ -53,15 +53,15 @@
         line-height: 50px;
 
         &.hasUnseenStory {
-          border: 3px solid $bg-dark;
-          outline: 3px solid $secondary;
+          border: 3px solid var(--bg-dark);
+          outline: 3px solid var(--secondary);
         }
       }
 
       .userInfo {
         width: 100%;
         .name {
-          color: $primary;
+          color: var(--primary);
           font-weight: 600;
           font-size: 13px;
           line-height: 16px;
@@ -72,7 +72,7 @@
           font-size: 11px;
           line-height: 13px;
 
-          color: $primary-light;
+          color: var(--primary-light);
         }
       }
 

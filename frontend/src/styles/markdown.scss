@@ -1,7 +1,7 @@
 /** define colors global **/
 $markdown_color: (
-  a: $primary,
-  b: $primary,
+  a: var(--primary),
+  b: var(--primary),
   c: #eaecef,
   d: #6a737d,
   e: #0366d6,
