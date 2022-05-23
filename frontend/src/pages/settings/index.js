@@ -31,7 +31,7 @@ const SettingsPage = () => {
         data={[
           {
             info: {
-              iconUri: "/assets/icons/filled/eye.svg",
+              iconUri: "/assets/icons/filled/Eye.svg",
               text: "Appearance",
             },
             content: (
