@@ -41,6 +41,6 @@ Here's how you could find me:
 * [Twitter](https://twitter.com/mohit_yadav)
 * [Instagram](https://instagram.com/mohit_yadav)
 * [LinkedIn](https://linkedin.com/in/mohit_yadav)
-* [Blog](https://blog.mohityadav.codes)
+* [Blog](https://just-moh-it.hashnode.dev/)
   `,
 };

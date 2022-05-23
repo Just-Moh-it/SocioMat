@@ -35,8 +35,8 @@ const Login = () => {
     try {
       const res = await appwrite.account.createOAuth2Session(
         provider,
-        "http://localhost:3000/onboarding",
-        "http://localhost:3000/login"
+        "/onboarding",
+        "/login"
       );
     } catch (error) {
       toast.error(`Error occured while logging in: ${error?.message}`);

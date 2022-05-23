@@ -1,0 +1,258 @@
+{
+    "projectId": "6271888f3bed1d64d0f0",
+    "projectName": "SocioMat",
+    "collections": [
+        {
+            "$id": "627baa413e7d2c197667",
+            "$read": [
+                "role:all"
+            ],
+            "$write": [
+                "role:member"
+            ],
+            "name": "users",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "username",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "name",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 32,
+                    "default": null
+                },
+                {
+                    "key": "bio",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 160,
+                    "default": null
+                },
+                {
+                    "key": "dob",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": -9223372036854775807,
+                    "max": 9223372036854775807,
+                    "default": null
+                },
+                {
+                    "key": "website",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": null
+                },
+                {
+                    "key": "dp",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "cover",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 500,
+                    "default": "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&h=500&q=70"
+                },
+                {
+                    "key": "mats",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 9223372036854775807,
+                    "default": 0
+                },
+                {
+                    "key": "followers",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 9223372036854775807,
+                    "default": 0
+                },
+                {
+                    "key": "following",
+                    "type": "integer",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "min": 0,
+                    "max": 9223372036854775807,
+                    "default": 0
+                },
+                {
+                    "key": "savedMatIds",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": true,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "username",
+                    "type": "unique",
+                    "status": "available",
+                    "attributes": [
+                        "username"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        },
+        {
+            "$id": "627cc1cc64e1128eee0c",
+            "$read": [
+                "role:all"
+            ],
+            "$write": [
+                "role:member"
+            ],
+            "name": "mats",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "userId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "size": 280,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "627cd10e20623fb1c324",
+            "$read": [
+                "role:all"
+            ],
+            "$write": [
+                "role:member"
+            ],
+            "name": "comments",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 280,
+                    "default": null
+                },
+                {
+                    "key": "matId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "userId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": []
+        },
+        {
+            "$id": "627cd2e71a12edf52767",
+            "$read": [
+                "role:all"
+            ],
+            "$write": [
+                "role:member"
+            ],
+            "name": "follows",
+            "enabled": true,
+            "permission": "collection",
+            "attributes": [
+                {
+                    "key": "followerId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "followingId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "followNode",
+                    "type": "unique",
+                    "status": "available",
+                    "attributes": [
+                        "followerId",
+                        "followingId"
+                    ],
+                    "orders": [
+                        "ASC",
+                        "ASC"
+                    ]
+                }
+            ]
+        }
+    ]
+}
