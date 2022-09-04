@@ -48,3 +48,13 @@ At the same time, I discovered [pika.style](https://pika.style), which did the s
 Honestly, I don't think it's the best investment of my time. The main goal was to learn Appwrite and use it in pet projects, but I quickly realized that Appwrite wasn't what I thought, and that put limitations on the use-cases.
 
 Anyway, I'd still like to finish this project if I get the time, but very in-probable. If I have the assurity that the work would be noticed, I would surely work on it, but that's unlikely (unless this repo gets a lot of stars, of-course ;)
+
+
+## 🌟 Support this project
+
+![](https://user-images.githubusercontent.com/48997634/174794647-0c851917-e5c9-4fb9-bf88-b61d89dc2f4f.gif)
+
+### [⏫⭐️ Scroll to the star button](#start-of-content)
+
+If you believe this project has potential, feel free to **star this repo** just like many [amazing people](/stargazers)
+have.
